@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 19:44:29
--- Versión del servidor: 8.1.0
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 13-05-2024 a las 16:13:07
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `favorite` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `lat` float DEFAULT NULL,
   `lon` float DEFAULT NULL,
-  `user` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `user` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `favorite`
@@ -54,11 +54,11 @@ INSERT INTO `favorite` (`id`, `name`, `lat`, `lon`, `user`) VALUES
 --
 
 CREATE TABLE `photo` (
-  `id` int NOT NULL,
-  `user` int DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `user` int(11) DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `photo`
@@ -78,10 +78,10 @@ INSERT INTO `photo` (`id`, `user`, `location`, `url`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -90,6 +90,19 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `password`) VALUES
 (1, 'albert', 'admin'),
 (2, 'paula', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `valoracion`
+--
+
+CREATE TABLE `valoracion` (
+  `Usuario` varchar(255) DEFAULT NULL,
+  `Estrellas` varchar(255) DEFAULT NULL,
+  `Comentario` text DEFAULT NULL,
+  `Fecha` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
@@ -121,19 +134,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

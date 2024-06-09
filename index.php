@@ -1,8 +1,138 @@
+<!-- Voy a hacer solo los comentario en los archivos en español, ya que es lo mismo -->
 <!doctype html>
 
 <html lang="es-ES" class="h-100">
 
 <head>
+    <!-- Estilos -->
+    <style>
+        /* Estilos botón de cambio de idioma */
+        .es {
+            color: white;
+        }
+
+        .cat {
+            color: grey;
+        }
+
+        .check {
+            position: relative;
+            width: 50px;
+            
+        }
+
+        .check:before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 17px;
+            background: #333;
+            border-radius: 25px;
+        }
+
+        .check:after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 17px;
+            background: #fff;
+            border-radius: 25px;
+            transition: 0.25s;
+            border: 2px solid #333;
+            box-sizing: border-box;
+        }
+
+        .check:checked:after {
+            left: 25px;
+            border: 2px solid black;
+        }
+
+        .check:checked:before {
+            background: grey;
+        }
+        /* Estilos botón valoraciones */
+        a{
+            text-decoration: none !important;
+        }
+        .valoraciones{
+            background-color: greenyellow;
+            height: 45px;
+            border-radius: 5px;
+        }
+        /* CSS cambio tema */
+        body.light-theme {
+            background-color: #ffffff;
+            color: #000000;
+
+        }
+
+        body.dark-theme {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        body.light-theme span {
+            color: #000000;
+        }
+
+        body.dark-theme span {
+            color: #ffffff;
+        }
+
+    /* Tarjeta de notificaciones */
+    .card-notificaciones {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 10px;
+        background: linear-gradient(145deg, #343a40, #212529);
+        box-shadow: 5px 5px 15px #1c1e21, -5px -5px 15px #42494f;
+    }
+
+    .card-notificaciones .card-text-titol {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card-notificaciones .ph-notificaciones {
+        font-size: 1rem;
+        color: #ffc107; /* Color amarillo para alertas */
+    }
+
+    /* Estilos para otras tarjetas de clima */
+    .card-temperatura {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 10px;
+        background: linear-gradient(145deg, #343a40, #212529);
+        box-shadow: 5px 5px 15px #1c1e21, -5px -5px 15px #42494f;
+    }
+
+    .card-temperatura .card-text-titol {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card-temperatura .ph-current-temperature {
+        font-size: 1.5rem;
+        color: #ffffff;
+    }
+
+
+    </style>
+    <script>
+        // JS para cambiar idioma 
+        var check = document.querySelector(".check");
+        check.addEventListener('click', idioma);
+
+        function idioma(idioma) {
+
+
+            if (idioma == "cat") {
+                location.href = "index.php"
+            } else {
+                location.href = "indexcat.php";
+            }
+        }
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -14,7 +144,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" \
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" \ crossorigin="anonymous">
-
+    <!-- Cambio tema link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   
     <!-- Favicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <meta name="theme-color" content="#712cf9">
@@ -23,20 +155,24 @@
     <link href="cover.css" rel="stylesheet">
 </head>
 
-<body class="text-bg-dark bg-dark">
+<body class="light-theme">
+    <br>
+<div class="container">
+    <button id="themeToggle" class="btn btn-primary">Cambiar tema</button>
     <div class="main-container container-fluid p-3 d-flex flex-column justify-content-between">
         <header class="mb-2 d-flex flex-row align-items-center justify-content-between w-100 px-5 flex-wrap">
-            <div class="page-logo d-flex flex-row align-items-center justify-content-between">
-                <i class="page-icon bi bi-rainbow"></i>
-                <!-- <h3 class="float-md-start mb-0">_METEODAW</h3> -->
-                <h3 class="float-md-start mb-0">_METEODAW</h3>
+            <!-- Botón cambiar idioma -->
+            <div class="flex">
+            <span class="es">Español</span>
+                <input type="checkbox" class="check" onclick="idioma('es')">
+                <span class="cat" style="color: ##986028">Catalan</span>
             </div>
             <div class="d-flex">
                 <input id="searchLocation" class="search-input form-control me-2 bg-dark bg-gradient" type="search"
-                    placeholder="Search" aria-label="Search" list="suggestions" autocomplete="off">
+                    placeholder="Buscar" aria-label="Search" list="suggestions" autocomplete="off">
                 <datalist id="suggestions">
                 </datalist>
-                <button class="search-button btn btn-outline-secondary" type="submit">Search</button>
+                <button class="search-button btn btn-outline-secondary" type="submit">Buscar</button>
                 <button class="current-location-button btn btn-outline-secondary mx-2" type="button">
                     <i class="geoloc-icon bi bi-crosshair"></i>
                 </button>
@@ -68,6 +204,12 @@
                 <button type="button" class="boton-logout btn btn-danger">
                     <i class="bi bi-person"></i>
                 </button>
+                <!-- Botón de Valoración -->
+                <a href="valoraciones.php">
+                <button type="button" class="valoraciones">
+                    <span>Valoración</span>
+                </button>
+                </a>
             </div>
 
         </header>
@@ -79,11 +221,11 @@
                     <!-- Card Ara-->
                     <div class="card-ara card bg-dark bg-gradient">
                         <div class="card-body d-flex flex-column">
-                            <span class="card-text-ara card-text">Ara</span>
+                            <span class="card-text-ara card-text">Ahora</span>
                             <div class="d-flex flex-row justify-content-evenly align-items-center">
                                 <span class="ph-current-temperature_2m card-text-temp-current card-text">--</span>
                                 <img src="./assets/images/weather_icons/dummy.png"
-                                    class="ph-current-weather_code card-img card-img-top" alt="...">
+                                    class="temperatura23 ph-current-weather_code card-img card-img-top" alt="...">
                             </div>
                             <span class="ph-current-description card-text-description-current card-text">--</span>
                             <hr>
@@ -155,7 +297,7 @@
                         <div class="card-qualitat-aire card bg-dark bg-gradient">
                             <div class="card-body d-flex flex-column gap-3">
                                 <div class="d-flex flex-row justify-content-between align-items-center">
-                                    <span class="card-text-titol card-text">Qualitat de l'aire</span>
+                                    <span class="card-text-titol card-text">Calidad del aire</span>
                                     <span class="badge rounded-pill text-bg-warning">Pobra</span>
                                 </div>
                                 <div class="d-flex flex-row justify-content-around align-items-center">
@@ -183,17 +325,17 @@
                         <div class="card-sol card bg-dark bg-gradient">
                             <div class="card-body d-flex flex-column gap-3">
                                 <div class="d-flex flex-row justify-content-start align-items-center">
-                                    <span class="card-text-titol card-text">Sortida i posta de sol</span>
+                                    <span class="card-text-titol card-text">Salida y puesta de sol</span>
                                 </div>
                                 <div class="d-flex flex-row justify-content-around align-items-center">
                                     <i class="card-icon bi bi-brightness-high"></i>
                                     <div class="d-flex flex-column gap-3 justify-content-between align-items-center">
-                                        <span class="card-text-variable card-text">Sortida</span>
+                                        <span class="card-text-variable card-text">Salida</span>
                                         <span class="ph-daily-sunrise card-text-mesura card-text">--</span>
                                     </div>
                                     <i class="card-icon bi bi-moon"></i>
                                     <div class="d-flex flex-column gap-3 justify-content-between align-items-center">
-                                        <span class="card-text-variable card-text">Posta</span>
+                                        <span class="card-text-variable card-text">Puesta</span>
                                         <span class="ph-daily-sunset card-text-mesura card-text">--</span>
                                     </div>
                                 </div>
@@ -203,7 +345,7 @@
                         <div class="card-humitat card bg-dark bg-gradient">
                             <div class="card-body d-flex flex-column gap-3">
                                 <div class="d-flex flex-row justify-content-start align-items-center">
-                                    <span class="card-text-titol card-text">Humitat</span>
+                                    <span class="card-text-titol card-text">Humedad</span>
                                 </div>
                                 <div class="d-flex flex-row justify-content-around align-items-center">
                                     <i class="card-icon bi bi-moisture"></i>
@@ -215,7 +357,7 @@
                         <div class="card-pressio card bg-dark bg-gradient">
                             <div class="card-body d-flex flex-column gap-3">
                                 <div class="d-flex flex-row justify-content-start align-items-center">
-                                    <span class="card-text-titol card-text">Pressió atmosfèrica</span>
+                                    <span class="card-text-titol card-text">Presión atmosférica</span>
                                 </div>
                                 <div class="d-flex flex-row justify-content-around align-items-center">
                                     <i class="card-icon bi bi-hurricane"></i>
@@ -227,7 +369,7 @@
                         <div class="card-visibilitat card bg-dark bg-gradient">
                             <div class="card-body d-flex flex-column gap-3">
                                 <div class="d-flex flex-row justify-content-start align-items-center">
-                                    <span class="card-text-titol card-text">Precipitació</span>
+                                    <span class="card-text-titol card-text">Precipitación</span>
                                 </div>
                                 <div class="d-flex flex-row justify-content-around align-items-center">
                                     <i class="card-icon bi bi-cloud-drizzle"></i>
@@ -239,7 +381,7 @@
                         <div class="card-vent card bg-dark bg-gradient">
                             <div class="card-body d-flex flex-column gap-3">
                                 <div class="d-flex flex-row justify-content-start align-items-center">
-                                    <span class="card-text-titol card-text">Vent</span>
+                                    <span class="card-text-titol card-text">Viento</span>
                                 </div>
                                 <div class="d-flex flex-row justify-content-around align-items-center">
                                     <i class="card-icon bi bi-wind"></i>
@@ -348,19 +490,19 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="loginModalLabel">Log in</h1>
+                            <h1 class="modal-title fs-5" id="loginModalLabel">Acceso</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form>
                                 <div class="mb-3">
-                                    <label for="inputUser" class="form-label">User</label>
+                                    <label for="inputUser" class="form-label">Usuario</label>
                                     <input type="text" class="form-control" id="inputUser" name="user">
-                                    <div id="inputUserHelp" class="form-text">We'll never share your username with anyone
-                                        else.</div>
+                                    <div id="inputUserHelp" class="form-text">Nunca compartiremos tu nombre de usuario con nadie.
+                                        demás.</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputPassword" class="form-label">Password</label>
+                                    <label for="inputPassword" class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="inputPassword" name="password">
                                 </div>
                                 <button type="button" class="button-login btn btn-primary" name="login">Entra</button>
@@ -378,23 +520,23 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="uploadPhotoLabel">Upload photo</h1>
+                        <h1 class="modal-title fs-5" id="uploadPhotoLabel">Subir foto</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label for="photoLocation" class="form-label">Location</label>
+                                <label for="photoLocation" class="form-label">Ubicación</label>
                                 <input type="text" class="form-control" id="photoLocation" name="photoLocation"
                                     readonly>
                             </div>
                             <!-- Image input -->
                             <div class="mb-3">
-                                <label for="photoFile" class="form-label">Select photo to upload</label>
+                                <label for="photoFile" class="form-label">Selecciona foto para subir</label>
                                 <input class="form-control" type="file" id="photoFile" name="photoFile">
                             </div>
                             <button type="button" class="button-upload-photo btn btn-primary"
-                                name="login">Upload</button>
+                                name="login">Subir</button>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -407,19 +549,19 @@
         <div class="offcanvas offcanvas-bottom bg-dark h-100" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="false">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
                 <button type="button" class="btn-close offcanvas-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body d-flex flex-row align-items-center justify-content-evenly">
                 <!-- Location card -->
                 <div class="card bg-dark-subtle" style="width: 18rem;">
                     <div class="card-body">
-                        <h6 class="card-title text-secondary-emphasis">Location:</h6>
+                        <h6 class="card-title text-secondary-emphasis">Ubicacion:</h6>
                         <span class="mb-5" id="offcanvas-location">wwww</span>
-                        <h6 class="card-title my-4">Latitude:
+                        <h6 class="card-title my-4">Latitud:
                             <span id="offcanvas-lat"></span>
                         </h6>
-                        <h6 class="card-title my-4">Longitude:
+                        <h6 class="card-title my-4">Longitud:
                             <span id="offcanvas-lon"></span>
                         </h6> 
                     </div>
@@ -427,19 +569,16 @@
                 <!-- Carousel -->
                 <div id="carouselExample" class="carousel slide w-50">
                     <div class="carousel-inner d-flex flex-row align-items-center">
-                        <!-- <div class="carousel-item active">
-                            <img src="..." class="d-block w-100" alt="...">
-                        </div> -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">Anterior</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">Siguiente</span>
                     </button>
                 </div>
             </div>
@@ -447,9 +586,36 @@
 
         <footer class="w-100 mt-3 text-white-50 d-flex flex-columns justify-content-around">
             <span>ETP XAVIER CFGS DAW M6-M7 2023/2024</span>
-            <span>Dades ofertes per <a target="_blank" href="https://open-meteo.com/">Open-Meteo.com</a></span>
+            <!-- Te copio el target blank de aqui para el footer de valoraciones :P -->
+            <span>Datos ofrecidos por <a target="_blank" href="https://open-meteo.com/">Open-Meteo.com</a></span>
         </footer>
     </div>
+</div>
+<script>
+// JS cambio tema
+document.addEventListener('DOMContentLoaded', (event) => {
+    const themeToggle = document.getElementById('themeToggle');
+    
+    // Load the saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.classList.add(savedTheme + '-theme');
+
+    themeToggle.addEventListener('click', () => {
+        if (document.body.classList.contains('light-theme')) {
+            document.body.classList.remove('light-theme');
+            document.body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-theme');
+            document.body.classList.add('light-theme');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" \

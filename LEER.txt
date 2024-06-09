@@ -1,0 +1,28 @@
+FET: -Atualizar dashboard a partir de búsquedas con sugerencias
+FET: -Atualizar dashboard a partir de geolocalización del navegador
+FET: -Añadir modal de login
+FET: -Autenticación de usuarios
+FET: -Daily forecast (repetido)
+
+PER FERs:
+->Poder guardar localizaciones favoritas
+---- Actualizar bbdd
+---- Nueva ruta de backend /favoritos
+---- datos en formato JSON
+->Que cada usuario tenga su localización por defecto (primera de las favoritas?)
+---- Nueva ruta o no?
+->Logging actividad aplicación: timestamp,script ejecutado,método(payload si hay post),ip_cliente,sesión(usuario)
+---- usar superglobals
+->Tener en cuenta zonas horarias (FIX)
+
+->Nueva funcionalidad: fotos de usuarios
+---- FRONT: Form Data: data.append('file', input.files[0])
+---- BACK: move_uploaded_file( $_FILES['userFile']['tmp_name'], 'images/'.$newname);
+---- FRONT: mostrar imágenes de algún modo
+
+
+
+
+->Funcionalidades realizadas por David 
+---- FRONT: Boton cambiar idioma/Pagina valoraciones/Tabla/Formulario/Header/Footer/Estilos.
+---- BACK: Base de datos actualizada para la funcion validaciones, exportada/Funcion para Formulario/Funcion para tabla/Funcion para cambiar idioma/Links.

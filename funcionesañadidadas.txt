@@ -1,0 +1,10 @@
+JS: Cambio de idioma.
+=====================
+PHP: Sistema de valoraciones 
+IMPORTANTE HACER ESTO EN SQL PARA QUE FUNCIONE:
+CREATE TABLE valoracion (
+    Usuario VARCHAR(255),
+    Estrellas VARCHAR(255),
+    Comentario TEXT,
+    Fecha DATE
+);
