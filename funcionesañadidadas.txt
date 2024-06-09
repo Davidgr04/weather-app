@@ -8,3 +8,8 @@ CREATE TABLE valoracion (
     Comentario TEXT,
     Fecha DATE
 );
+-------
+->Recuperación FRONT(JS)
+---- Boton para cambiar el modo oscuro/claro.
+---- En página valoraciones un buscador.
+---- En la página valoraciones cuando clicas en el formulario se cambia el color del fondo del formulario.("Es inutil pero simplemente era para meter una funcion de Gestion de eventos").

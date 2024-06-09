@@ -26,3 +26,8 @@ PER FERs:
 ->Funcionalidades realizadas por David 
 ---- FRONT: Boton cambiar idioma/Pagina valoraciones/Tabla/Formulario/Header/Footer/Estilos.
 ---- BACK: Base de datos actualizada para la funcion validaciones, exportada/Funcion para Formulario/Funcion para tabla/Funcion para cambiar idioma/Links.
+
+->Recuperación FRONT(JS)
+---- Boton para cambiar el modo oscuro/claro.
+---- En página valoraciones un buscador.
+---- En la página valoraciones cuando clicas en el formulario se cambia el color del fondo del formulario.("Es inutil pero simplemente era para meter una funcion de Gestion de eventos").
